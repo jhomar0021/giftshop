@@ -1,0 +1,137 @@
+[
+  {
+    "id": 1,
+    "name": "The Crimson Romance Bouquet",
+    "category": "flowers",
+    "price": 89.99,
+    "image": "https://images.unsplash.com/photo-1512056495345-913a0c261dc8?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "description": "Two dozen premium velvet long-stemmed red roses arranged with silver dollar eucalyptus in a signature matte ceramic vase.",
+    "isBestSeller": true
+  },
+  {
+    "id": 2,
+    "name": "Artisanal Champagne Truffle Box",
+    "category": "sweets",
+    "price": 45.0,
+    "image": "https://images.unsplash.com/photo-1548741487-18d363dc4469?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "description": "Handcrafted pink champagne ganache truffles dusted with edible gold leaf flakes, packaged in a plush suede heart box.",
+    "isBestSeller": true
+  },
+  {
+    "id": 3,
+    "name": "Interlocking Infinity Ring Set",
+    "category": "jewelry",
+    "price": 149.99,
+    "image": "https://images.unsplash.com/photo-1720686615374-ea04dac6a66e?q=80&w=580&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "description": "Solid 14k rose gold bands intertwining seamlessly, symbolizing two paths joining into one beautiful destination.",
+    "isBestSeller": true
+  },
+  {
+    "id": 4,
+    "name": "Midnight Rose & Oud Candle Luxe",
+    "category": "decor",
+    "price": 32.0,
+    "image": "https://images.unsplash.com/photo-1718881742886-d0a697345ab1?q=80&w=580&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "description": "Slow-pouring apricot wax candle emitting deep notes of crushed damask rose petals, rich oud wood, and warm honey.",
+    "isBestSeller": false
+  },
+  {
+    "id": 5,
+    "name": "Blush Orchid Glass Terrarium",
+    "category": "flowers",
+    "price": 75.0,
+    "image": "https://images.unsplash.com/photo-1624274565951-53076af816ad?q=80&w=580&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "description": "Rare pink phalaenopsis orchids nested in geometric brass and glass casing with preserved structural moss layers.",
+    "isBestSeller": false
+  },
+  {
+    "id": 6,
+    "name": "Dark Chocolate Sea Salt Caramels",
+    "category": "sweets",
+    "price": 28.5,
+    "image": "https://images.unsplash.com/photo-1583312205568-2975f2f726d3?q=80&w=580&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "description": "Slow-cooked organic butter caramels drenched in 72% single-origin dark chocolate, topped with delicate fleur de sel crystals.",
+    "isBestSeller": false
+  },
+  {
+    "id": 7,
+    "name": "Locked Heart Pendant Necklace",
+    "category": "jewelry",
+    "price": 195.0,
+    "image": "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80",
+    "description": "A dainty sterling silver padlock pendant holding a single brilliant-cut conflict-free diamond at its core.",
+    "isBestSeller": false
+  },
+  {
+    "id": 8,
+    "name": "Gilded Rose Quartz Coasters",
+    "category": "decor",
+    "price": 54.0,
+    "image": "https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?auto=format&fit=crop&w=800&q=80",
+    "description": "Set of four raw-cut authentic Madagascar rose quartz stone slices, complete with electroplated 24k gold rims.",
+    "isBestSeller": false
+  },
+  {
+    "id": 9,
+    "name": "The Preserved Eternal Rose",
+    "category": "flowers",
+    "price": 65.0,
+    "image": "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=800&q=80",
+    "description": "A single flawless ruby-red rose preserved at peak bloom, housed elegantly inside an airtight glass display bell jar.",
+    "isBestSeller": false
+  },
+  {
+    "id": 10,
+    "name": "Ruby Filigree Drop Earrings",
+    "category": "jewelry",
+    "price": 220.0,
+    "image": "https://images.unsplash.com/photo-1635767798638-3e25273a8236?auto=format&fit=crop&w=800&q=80",
+    "description": "Intricate vintage-inspired lace patterns forged in yellow gold, anchoring two pear-cut natural red rubies.",
+    "isBestSeller": false
+  },
+  {
+    "id": 11,
+    "name": "Strawberries & Cream Macaron Tower",
+    "category": "sweets",
+    "price": 48.0,
+    "image": "https://images.unsplash.com/photo-1569864358642-9d1684040f43?auto=format&fit=crop&w=800&q=80",
+    "description": "A 16-piece gradient tower of crisp almond meringue shells stuffed with white chocolate ganache and strawberry compote.",
+    "isBestSeller": false
+  },
+  {
+    "id": 12,
+    "name": "Vintage Brass Candelabra Set",
+    "category": "decor",
+    "price": 88.0,
+    "image": "https://images.unsplash.com/photo-1606744824163-985d376605aa?auto=format&fit=crop&w=800&q=80",
+    "description": "Distressed antique-finished brass taper candle holders, bringing an intimate, dramatic glow to dinner configurations.",
+    "isBestSeller": false
+  },
+  {
+    "id": 13,
+    "name": "The Pure White Lily Ensemble",
+    "category": "flowers",
+    "price": 95.0,
+    "image": "https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=800&q=80",
+    "description": "A dramatic architectural arrangement of aromatic white Casablanca lilies and delicate sprigs of green pennycress.",
+    "isBestSeller": false
+  },
+  {
+    "id": 14,
+    "name": "Raspberry Champagne Caviar Pearls",
+    "category": "sweets",
+    "price": 36.0,
+    "image": "https://images.unsplash.com/photo-1516685018646-549198525c1b?auto=format&fit=crop&w=800&q=80",
+    "description": "Molecular sweet gastronomy jelly drops infused with authentic rosé champagne, designed to burst over dynamic desserts.",
+    "isBestSeller": false
+  },
+  {
+    "id": 15,
+    "name": "Silk Velvet Sweetheart Pillow",
+    "category": "decor",
+    "price": 42.0,
+    "image": "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=800&q=80",
+    "description": "A luxurious, deep crimson throw cushion hand-stitched from heavy weight silk-spun velvet fabric.",
+    "isBestSeller": false
+  }
+]

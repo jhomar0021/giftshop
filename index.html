@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amour & Co. | Premium Valentine's Gift Boutique</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-light text-dark">
+
+    <nav class="navbar navbar-expand-md navbar-light bg-white sticky-top shadow-sm border-bottom border-rose-100 py-3">
+        <div class="container">
+            <a class="navbar-brand text-rose font-serif fw-bold tracking-wide d-flex align-items-center gap-2" href="#"
+                onclick="navigateTo('home')">
+                <i class="fa-solid fa-heart-pulse text-rose"></i> Amour & Co.
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-md-0 fw-medium">
+                    <li class="nav-item"><a class="nav-link text-stone hover-rose px-3" href="#"
+                            onclick="navigateTo('home')">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-stone hover-rose px-3" href="#"
+                            onclick="navigateTo('catalog')">Shop Gifts</a></li>
+                    <li class="nav-item"><a class="nav-link text-stone hover-rose px-3" href="#"
+                            onclick="navigateTo('about')">Our Story</a></li>
+                    <li class="nav-item"><a class="nav-link text-stone hover-rose px-3" href="#"
+                            onclick="navigateTo('contact')">Custom Orders</a></li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <button onclick="toggleCart()"
+                        class="btn btn-link position-relative p-2 text-dark text-decoration-none">
+                        <i class="fa-solid fa-bag-shopping fs-4 text-stone hover-rose"></i>
+                        <span id="cart-count"
+                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-rose">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div id="cart-drawer" class="bg-white shadow-lg border-start">
+        <div class="p-4 h-100 d-flex flex-col justify-content-between">
+            <div>
+                <div class="d-flex justify-content-between align-items-center pb-3 border-bottom mb-3">
+                    <h5 class="font-serif fw-bold mb-0">Your Gift Bag</h5>
+                    <button onclick="toggleCart()" class="btn-close text-reset shadow-none"></button>
+                </div>
+                <div id="cart-items" class="overflow-y-auto" style="max-h: 60vh;">
+                </div>
+            </div>
+            <div class="border-t pt-3 mt-auto">
+                <div class="d-flex justify-content-between fw-bold fs-5 mb-3">
+                    <span>Total:</span>
+                    <span id="cart-total" class="text-rose">$0.00</span>
+                </div>
+                <button onclick="alert('Proceeding to Valentine Delivery Checkout!')"
+                    class="btn btn-rose w-full py-2.5 fw-medium uppercase tracking-wide">Secure Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <main id="page-home" class="page-section active">
+        <section id="heroCarousel" class="position-relative bg-rose-tint overflow-hidden border-bottom">
+            <div class="container-fluid p-0">
+                <div class="row g-0 align-items-center dynamic-hero-height">
+                    <div class="col-12 col-md-6 col-lg-6 p-4 p-sm-5 z-3 position-relative">
+                        <div class="hero-text-wrapper mx-auto">
+                            <span class="text-rose text-uppercase fw-bold tracking-widest small d-block mb-2">The
+                                Valentine's
+                                Edit</span>
+                            <h1 class="display-4 font-serif fw-bold text-dark tracking-tight mb-3" id="hero-title">
+                                Crafting
+                                Moments of Pure Romance</h1>
+                            <p class="lead text-muted mb-4 fs-6 lh-lg" id="hero-subtitle">Handpicked luxury keepsakes
+                                and
+                                exquisite florals curated specifically for your love story.</p>
+                            <a id="hero-link" href="#"
+                                class="btn btn-dark btn-hero px-4 py-3 fw-semibold text-uppercase tracking-wider small shadow-sm">Discover
+                                This Gift</a>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-6 position-relative h-100 d-none d-md-block p-0">
+                        <div class="w-100 h-100 position-absolute top-0 start-0">
+                            <img id="hero-image" src="" alt="Hero Featured Product"
+                                class="w-100 h-100 object-fit-cover transition-hero">
+                        </div>
+                    </div>
+                    <div class="position-absolute start-0 top-0 w-100 h-100 d-md-none opacity-25 p-0 z-0">
+                        <img id="hero-mobile-bg" src="" class="w-100 h-100 object-fit-cover">
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="prevHeroSlide()"
+                class="carousel-control-custom position-absolute top-50 start-0 translate-middle-y ms-3 border-0 d-flex align-items-center justify-content-center"
+                aria-label="Previous Slide">
+                <i class="fa-solid fa-chevron-left text-dark"></i>
+            </button>
+            <button onclick="nextHeroSlide()"
+                class="carousel-control-custom position-absolute top-50 end-0 translate-middle-y me-3 border-0 d-flex align-items-center justify-content-center"
+                aria-label="Next Slide">
+                <i class="fa-solid fa-chevron-right text-dark"></i>
+            </button>
+
+            <div class="position-absolute bottom-0 start-50 translate-middle-x d-flex gap-2 mb-4 z-3">
+                <div onclick="changeHeroSlide(0)" class="hero-bar-indicator active" id="slide-bar-0"></div>
+                <div onclick="changeHeroSlide(1)" class="hero-bar-indicator" id="slide-bar-1"></div>
+                <div onclick="changeHeroSlide(2)" class="hero-bar-indicator" id="slide-bar-2"></div>
+            </div>
+        </section>
+
+        <section class="container py-5 mt-4">
+            <div class="text-center mb-5">
+                <h2 class="font-serif fw-bold text-dark">Our Most Loved Creations</h2>
+                <p class="text-muted small">Bestselling tokens of affection guaranteed to bring a smile.</p>
+            </div>
+            <div id="popular-grid" class="row g-4">
+            </div>
+        </section>
+
+        <section class="bg-white py-5 border-top border-bottom border-light">
+            <div class="container">
+                <div class="row align-items-center g-5">
+                    <div class="col-md-6">
+                        <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=600&q=80"
+                            alt="About preview" class="img-fluid rounded-3 shadow-sm object-fit-cover"
+                            style="height: 350px; width: 100%;">
+                    </div>
+                    <div class="col-md-6">
+                        <span class="text-rose text-uppercase fw-semibold tracking-widest small d-block mb-2">Our
+                            Philosophy</span>
+                        <h2 class="font-serif fw-bold text-dark mb-3">Every Gift Tells A Love Story</h2>
+                        <p class="text-muted mb-4 leading-relaxed">We believe that a gift shouldn't just be an item—it
+                            should be an unboxing experience that freezes time. From sustainably sourced florals to
+                            handcrafted jewelry tokens, we pour devotion into every design element.</p>
+                        <button onclick="navigateTo('about')"
+                            class="btn btn-link text-rose p-0 fw-medium text-decoration-none hover-underline">Read our
+                            full journey <i class="fa-solid fa-arrow-right-long ms-2"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="font-serif fw-bold text-dark">Shared Moments of Joy</h2>
+                <p class="text-muted small">Real love notes from real couples.</p>
+            </div>
+            <div id="reviews-grid" class="row g-4">
+            </div>
+        </section>
+
+        <section class="container my-5">
+            <div class="bg-rose-gradient text-white rounded-4 p-4 p-md-5 text-center shadow-sm mx-2">
+                <h2 class="font-serif fw-bold mb-3">Looking for Something Completely Unique?</h2>
+                <p class="text-white-50 max-w-2xl mx-auto mb-4">Whether it's planning a massive room setup of roses or
+                    tailored initials customized into jewelry, our design concierges are ready to help you coordinate
+                    the perfect gesture.</p>
+                <button onclick="navigateTo('contact')"
+                    class="btn btn-light text-rose fw-semibold px-4 py-2 shadow-sm">Inquire Custom Orders</button>
+            </div>
+        </section>
+    </main>
+
+    <main id="page-about" class="page-section container py-5">
+        <div class="text-center mx-auto mb-5" style="max-width: 600px;">
+            <h1 class="font-serif fw-bold text-dark mb-2">The Hearts Behind Amour & Co.</h1>
+            <p class="text-muted small">How we grew from a small backyard flower bench to a sanctuary for thoughtful
+                lovers everywhere.</p>
+        </div>
+
+        <div class="row align-items-center g-5 mb-5">
+            <div class="col-md-6">
+                <h2 class="font-serif fw-bold text-rose mb-3">The Humble Beginning</h2>
+                <p class="text-muted leading-relaxed mb-3">Amour & Co. started with nothing but a rolling kitchen block,
+                    a spool of silk crimson ribbon, and a vision. Founded by high school sweethearts after struggling to
+                    find meaningful personalized keepsakes, we set out to build an intentional alternative to generic
+                    gifts.</p>
+                <p class="text-muted leading-relaxed">We made it our mission to bridge local greenhouse florals with
+                    luxury artisans. Every package leaves our studio designed to deliver butterflies.</p>
+            </div>
+            <div class="col-md-6">
+                <img src="https://images.unsplash.com/photo-1463936575829-25148e1db1b8?auto=format&fit=crop&w=600&q=80"
+                    alt="Shop Building" class="img-fluid rounded-3 shadow-sm w-100 object-fit-cover"
+                    style="height: 300px;">
+            </div>
+        </div>
+
+        <div class="row align-items-center g-5 mb-5 flex-row-reverse">
+            <div class="col-md-6">
+                <h2 class="font-serif fw-bold text-rose mb-3">Our Design Sanctuary</h2>
+                <p class="text-muted leading-relaxed mb-3">Today, our primary brick-and-mortar studio houses an
+                    olfactory bar, zero-waste wrapping stations, and an engineering suite for processing preserved
+                    florals that remain vibrant for up to three years without water.</p>
+                <p class="text-muted leading-relaxed">We carefully control every parameter—from environmental storage
+                    down to individual box presentation tissue layer structures.</p>
+            </div>
+            <div class="col-md-6">
+                <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=600&q=80"
+                    alt="Our Atelier Storefront" class="img-fluid rounded-3 shadow-sm w-100 object-fit-cover"
+                    style="height: 300px;">
+            </div>
+        </div>
+
+        <div class="pt-4">
+            <h2 class="font-serif fw-bold text-center mb-5 text-dark">The Romance Artisans</h2>
+            <div class="row g-4 text-center justify-content-center">
+                <div class="col-sm-6 col-md-4">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80"
+                        alt="Lead Designer"
+                        class="rounded-circle border border-2 border-rose-light object-fit-cover mb-3"
+                        style="width: 120px; height: 120px;">
+                    <h5 class="font-serif fw-bold mb-1">Elena Rostova</h5>
+                    <p class="text-rose text-uppercase tracking-widest mb-0" style="font-size: 0.7rem;">Lead Floral
+                        Alchemist</p>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80"
+                        alt="Co-Founder" class="rounded-circle border border-2 border-rose-light object-fit-cover mb-3"
+                        style="width: 120px; height: 120px;">
+                    <h5 class="font-serif fw-bold mb-1">Julian Bennett</h5>
+                    <p class="text-rose text-uppercase tracking-widest mb-0" style="font-size: 0.7rem;">Co-Founder &
+                        Jewelry Curator</p>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80"
+                        alt="Concierge Manager"
+                        class="rounded-circle border border-2 border-rose-light object-fit-cover mb-3"
+                        style="width: 120px; height: 120px;">
+                    <h5 class="font-serif fw-bold mb-1">Amara Vance</h5>
+                    <p class="text-rose text-uppercase tracking-widest mb-0" style="font-size: 0.7rem;">Custom Delivery
+                        Concierge</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="page-catalog" class="page-section container py-5">
+        <div class="row g-4">
+            <!-- Refined Boutique Sidebar Filters -->
+            <aside class="col-md-4 col-lg-3">
+                <div class="card border-0 bg-white shadow-sm p-4 sticky-md-top"
+                    style="top: 110px; border-radius: 12px;">
+                    <div class="d-flex align-items-center gap-2 mb-3 pb-2 border-bottom border-light">
+                        <i class="fa-solid fa-sliders text-rose small"></i>
+                        <h5 class="font-serif fw-bold text-dark mb-0" style="font-size: 1.1rem;">Filter Collections</h5>
+                    </div>
+
+                    <!-- Theme-aligned Custom Filter Pill Group -->
+                    <div class="d-flex flex-column gap-2" role="radiogroup" aria-label="Product Categories">
+
+                        <label class="boutique-filter-item">
+                            <input type="radio" name="category-filter" value="all" checked
+                                onchange="filterProducts(this.value)">
+                            <span class="filter-content">
+                                <span class="filter-text">Show All Gifts</span>
+                                <i class="fa-solid fa-heart icon-heart"></i>
+                            </span>
+                        </label>
+
+                        <label class="boutique-filter-item">
+                            <input type="radio" name="category-filter" value="flowers"
+                                onchange="filterProducts(this.value)">
+                            <span class="filter-content">
+                                <span class="filter-text">Luxury Florals</span>
+                                <i class="fa-solid fa-heart icon-heart"></i>
+                            </span>
+                        </label>
+
+                        <label class="boutique-filter-item">
+                            <input type="radio" name="category-filter" value="jewelry"
+                                onchange="filterProducts(this.value)">
+                            <span class="filter-content">
+                                <span class="filter-text">Fine Jewelry</span>
+                                <i class="fa-solid fa-heart icon-heart"></i>
+                            </span>
+                        </label>
+
+                        <label class="boutique-filter-item">
+                            <input type="radio" name="category-filter" value="sweets"
+                                onchange="filterProducts(this.value)">
+                            <span class="filter-content">
+                                <span class="filter-text">Artisanal Sweets</span>
+                                <i class="fa-solid fa-heart icon-heart"></i>
+                            </span>
+                        </label>
+
+                        <label class="boutique-filter-item">
+                            <input type="radio" name="category-filter" value="decor"
+                                onchange="filterProducts(this.value)">
+                            <span class="filter-content">
+                                <span class="filter-text">Ambiance & Decor</span>
+                                <i class="fa-solid fa-heart icon-heart"></i>
+                            </span>
+                        </label>
+
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Product Grid Display Column -->
+            <div class="col-md-8 col-lg-9">
+                <div id="catalog-grid" class="row g-4">
+                    <!-- Injected dynamically via script -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="page-product" class="page-section container py-5">
+        <button onclick="navigateTo('catalog')"
+            class="btn btn-link text-rose p-0 font-medium text-decoration-none hover-underline mb-4">
+            <i class="fa-solid fa-arrow-left me-2"></i> Back to All Gifts
+        </button>
+        <div id="product-detail-view" class="row align-items-center g-5">
+        </div>
+    </main>
+
+    <main id="page-contact" class="page-section container py-5" style="max-width: 800px;">
+        <div class="text-center mb-5">
+            <h1 class="font-serif fw-bold text-dark mb-2">Bespoke Custom Commission Orders</h1>
+            <p class="text-muted small">Planning a grand gesture, wedding milestone, or custom Valentine delivery
+                layout?</p>
+        </div>
+
+        <div class="card border-0 bg-white shadow-sm p-4 p-md-5 rounded-4">
+            <form id="bespoke-contact-form" onsubmit="handleFormSubmit(event)">
+                <div class="row g-4 mb-4">
+                    <div class="col-sm-6">
+                        <label class="form-label fw-semibold text-muted small mb-1">Your Full Name</label>
+                        <input type="text" required class="form-control focus-rose p-2.5 bg-light border-0">
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="form-label fw-semibold text-muted small mb-1">Email Address</label>
+                        <input type="email" required class="form-control focus-rose p-2.5 bg-light border-0">
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label class="form-label fw-semibold text-muted small mb-1">Target Delivery Event Date</label>
+                    <input type="date" class="form-control focus-rose p-2.5 bg-light border-0">
+                </div>
+                <div class="mb-4">
+                    <label class="form-label fw-semibold text-muted small mb-1">What kind of dream design arrangement
+                        are we planning?</label>
+                    <textarea rows="4" required
+                        placeholder="Describe what you want custom-tailored (materials, scope, aesthetic choices)..."
+                        class="form-control focus-rose p-3 bg-light border-0"></textarea>
+                </div>
+                <button type="submit"
+                    class="btn btn-rose w-100 py-3 fw-medium text-uppercase tracking-wider small shadow-sm">Send Request
+                    to Conception Team</button>
+            </form>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white-50 pt-5 pb-4 mt-5 border-top border-secondary">
+        <div class="container">
+            <div class="row g-4 mb-4">
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="text-white font-serif fw-bold mb-3">Amour & Co.</h5>
+                    <p class="small">We provide expertly designed luxury gifts created with absolute affection for
+                        timeless lovers worldwide.</p>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="text-white fw-semibold mb-3">Explore</h6>
+                    <ul class="list-unstyled small d-flex flex-column gap-2">
+                        <li><a href="#" onclick="navigateTo('catalog')"
+                                class="text-white-50 text-decoration-none hover-white">Valentine Edits</a></li>
+                        <li><a href="#" onclick="navigateTo('about')"
+                                class="text-white-50 text-decoration-none hover-white">Our Story</a></li>
+                        <li><a href="#" onclick="navigateTo('contact')"
+                                class="text-white-50 text-decoration-none hover-white">Studio Concierge</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h6 class="text-white fw-semibold mb-3">Contact Info</h6>
+                    <p class="small lh-base mb-0">
+                        Studio No. 44, Sweetheart Lane<br>
+                        Manhattan, NY 10014<br>
+                        concierge@amourco.fake
+                    </p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h6 class="text-white fw-semibold mb-3">Newsletter</h6>
+                    <p class="small mb-3">Sign up for exclusive premium updates and priority drop access.</p>
+                    <div class="input-group">
+                        <input type="email" placeholder="Email Address"
+                            class="form-control bg-secondary text-white border-0 small shadow-none focus-none">
+                        <button onclick="alert('Thank you for subscribing!')" class="btn btn-rose px-3"><i
+                                class="fa-solid fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-top border-secondary pt-3 text-center" style="font-size: 0.75rem;">
+                <p class="mb-0">&copy; 2026 Amour & Co. Boutique Studio. Curated meticulously with love.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
