@@ -288,3 +288,79 @@ function handleFormSubmit(event) {
   document.getElementById("bespoke-contact-form").reset();
   navigateTo("home");
 }
+// ─── CHECKOUT MODAL LOGICAL ACTIONS ───
+
+function triggerCheckoutFlow() {
+  if (cart.length === 0) {
+    alert(
+      "Your gift bag is empty! Add a token of romance before inspecting checkout options.",
+    );
+    return;
+  }
+
+  // Close the cart slider drawer smoothly
+  document.getElementById("cart-drawer").classList.remove("open");
+
+  // Compute calculation parameters to update the checkout screen
+  const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const totalPrice = cart.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0,
+  );
+
+  document.getElementById("modal-checkout-count").innerText =
+    `${totalCount} Luxury Selected ${totalCount === 1 ? "Item" : "Items"}`;
+  document.getElementById("modal-checkout-total").innerText =
+    `$${totalPrice.toFixed(2)}`;
+
+  // Reset view visibility switches inside the modal back to entry defaults
+  document.getElementById("modal-checkout-form").classList.remove("d-none");
+  document.getElementById("modal-success-screen").classList.add("d-none");
+  document.getElementById("modal-checkout-form").reset();
+
+  // Initialize and showcase the Bootstrap modal wrapper object
+  const checkoutModal = new bootstrap.Modal(
+    document.getElementById("checkoutModal"),
+  );
+  checkoutModal.show();
+}
+
+function processModalPayment(event) {
+  event.preventDefault();
+
+  const submitBtn = document.getElementById("btn-submit-payment");
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Processing Transaction...`;
+
+  // Simulate payment transaction network delay
+  setTimeout(() => {
+    // Swap viewing panel templates
+    document.getElementById("modal-checkout-form").classList.add("d-none");
+    document.getElementById("modal-success-screen").classList.remove("d-none");
+
+    // Clear shopping states upon successful verification simulation
+    cart = [];
+    saveAndUpdateCart();
+
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = `<i class="fa-solid fa-lock-open small"></i> Authorize Payment`;
+  }, 2000);
+}
+
+// Optional automatic visual space spacer styling injector for card inputs
+document.addEventListener("DOMContentLoaded", () => {
+  const cardInput = document.getElementById("card-input-field");
+  if (cardInput) {
+    cardInput.addEventListener("input", (e) => {
+      let target = e.target;
+      let position = target.selectionStart;
+      let val = target.value.replace(/\D/g, "");
+      let newVal = "";
+      for (let i = 0; i < val.length; i++) {
+        if (i > 0 && i % 4 === 0) newVal += " ";
+        newVal += val[i];
+      }
+      target.value = newVal;
+    });
+  }
+});

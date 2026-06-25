@@ -61,8 +61,10 @@
                     <span>Total:</span>
                     <span id="cart-total" class="text-rose">$0.00</span>
                 </div>
-                <button onclick="alert('Proceeding to Valentine Delivery Checkout!')"
-                    class="btn btn-rose w-full py-2.5 fw-medium uppercase tracking-wide">Secure Checkout</button>
+                <!-- Inside side shopping cart drawer wrapper -->
+                <button onclick="triggerCheckoutFlow()"
+                    class="btn btn-rose w-full py-2.5 fw-medium uppercase tracking-wide">Secure
+                    Checkout</button>
             </div>
         </div>
     </div>
@@ -405,8 +407,96 @@
         </div>
     </footer>
 
+    <!-- ─── THEME-ALIGNED SECURE CHECKOUT MODAL ─── -->
+    <div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+                <!-- Modal Box Header -->
+                <div class="modal-header bg-rose-gradient text-white border-0 px-4 pt-4 pb-3">
+                    <div class="d-flex align-items-center gap-2">
+                        <i class="fa-solid fa-shield-heart fs-5"></i>
+                        <h5 class="modal-title font-serif fw-bold" id="checkoutModalLabel">Secure Gift Checkout</h5>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white shadow-none" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+
+                <!-- Main Action Content Area -->
+                <div class="modal-body p-4">
+                    <!-- Step 1: Entry Form Interface -->
+                    <form id="modal-checkout-form" onsubmit="processModalPayment(event)">
+                        <div
+                            class="bg-light rounded-3 p-3 mb-4 border border-rose-100 d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="text-muted small d-block">Order Summary</span>
+                                <span id="modal-checkout-count" class="fw-medium text-dark small">0 Items</span>
+                            </div>
+                            <div class="text-end">
+                                <span class="text-muted small d-block">Total Due</span>
+                                <span id="modal-checkout-total" class="fs-4 fw-bold text-rose">$0.00</span>
+                            </div>
+                        </div>
+
+                        <!-- Card Number Field Group -->
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold text-muted small mb-1">Cardholder Name</label>
+                            <input type="text" required class="form-control focus-rose p-2.5 bg-light border-0"
+                                placeholder="E.g., Clara Montgomery">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold text-muted small mb-1">Card Number</label>
+                            <div class="input-group bg-light rounded-3 overflow-hidden">
+                                <span class="input-group-text bg-light border-0 text-mutedpe-0"><i
+                                        class="fa-solid fa-credit-card"></i></span>
+                                <input type="text" required pattern="[0-9\s]{13,19}" maxlength="19"
+                                    class="form-control focus-rose p-2.5 bg-light border-0"
+                                    placeholder="4000 1234 5678 9010" id="card-input-field">
+                            </div>
+                        </div>
+
+                        <div class="row g-3 mb-4">
+                            <div class="col-6">
+                                <label class="form-label fw-semibold text-muted small mb-1">Expiration Date</label>
+                                <input type="text" required pattern="(0[1-9]|1[0-2])\/([0-9]{2})" maxlength="5"
+                                    class="form-control focus-rose p-2.5 bg-light border-0" placeholder="MM/YY">
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label fw-semibold text-muted small mb-1">Security Code (CVV)</label>
+                                <input type="password" required pattern="[0-9]{3,4}" maxlength="4"
+                                    class="form-control focus-rose p-2.5 bg-light border-0" placeholder="123">
+                            </div>
+                        </div>
+
+                        <button type="submit"
+                            class="btn btn-rose w-100 py-3 fw-medium text-uppercase tracking-wider small shadow-sm d-flex align-items-center justify-content-center gap-2"
+                            id="btn-submit-payment">
+                            <i class="fa-solid fa-lock-open small"></i> Authorize Payment
+                        </button>
+                    </form>
+
+                    <!-- Step 2: In-line Success Splash (Hidden Initially) -->
+                    <div id="modal-success-screen" class="text-center py-4 d-none">
+                        <div class="text-success display-2 mb-3 animate-heartbeat">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+                        <h4 class="font-serif fw-bold text-dark mb-2">Order Confirmed!</h4>
+                        <p class="text-muted small px-3">Your luxury delivery has been locked into our system. An
+                            digital
+                            receipt along with dynamic delivery tracking bounds has been dispatched to your email frame.
+                        </p>
+                        <button type="button" class="btn btn-dark px-4 py-2 mt-2 small" data-bs-dismiss="modal">Close
+                            Window</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
 </body>
+
+
 
 </html>
