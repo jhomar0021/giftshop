@@ -293,3 +293,79 @@
 .animate-heartbeat {
   animation: heartbeat 1.4s ease-in-out infinite;
 }
+/* Prevents mobile stacking clipping on catalog layouts */
+@media (max-width: 767px) {
+  .mobile-filter-container {
+    position: relative;
+    /* Pulls the container out into a higher viewport stacking order layer */
+    z-index: 100 !important;
+  }
+
+  #mobileFilterCollapse {
+    position: absolute;
+    width: calc(
+      100% - 30px
+    ); /* Matches standard padding margins inside container frames */
+    left: 15px;
+    z-index: 101 !important;
+    /* Formulates an ambient drop shadow base so it looks like an overlapping menu plate */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+  }
+}
+/* Custom Premium Boutique Filter Layouts */
+.boutique-filter-item {
+  display: block;
+  cursor: pointer;
+  position: relative;
+}
+
+.boutique-filter-item input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.boutique-filter-item .filter-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background-color: #f8f9fa;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  border-radius: 8px;
+  color: #555;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.boutique-filter-item .icon-heart {
+  font-size: 0.75rem;
+  color: var(--color-rose, #e11d48);
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.boutique-filter-item:hover .filter-content {
+  background-color: #fff1f2; /* Rose tint */
+  color: var(--color-rose, #e11d48);
+  transform: translateX(3px);
+}
+
+.boutique-filter-item input[type="radio"]:checked + .filter-content {
+  background-color: #fff1f2 !important;
+  border-color: rgba(225, 29, 72, 0.2) !important;
+  color: var(--color-rose, #e11d48) !important;
+  font-weight: 600;
+}
+
+.boutique-filter-item
+  input[type="radio"]:checked
+  + .filter-content
+  .icon-heart {
+  opacity: 1;
+  transform: scale(1);
+}

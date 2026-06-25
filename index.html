@@ -246,9 +246,65 @@
     </main>
 
     <main id="page-catalog" class="page-section container py-5">
+
+        <!-- 📱 MOBILE FILTER VIEW (Visible only on screens smaller than md) -->
+        <div class="d-md-none mb-4">
+            <div class="card border-0 bg-white shadow-sm p-3 rounded-3">
+                <div class="d-flex align-items-center gap-2 mb-2">
+                    <i class="fa-solid fa-sliders text-rose small"></i>
+                    <span class="font-serif fw-bold text-dark" style="font-size: 0.95rem;">Filter Collections</span>
+                </div>
+
+                <!-- Standard dynamic vertical list that pushes the grid content downwards safely -->
+                <div class="d-flex flex-column gap-2">
+                    <label class="boutique-filter-item">
+                        <input type="radio" name="category-filter-mobile" value="all" checked
+                            onchange="syncAndFilter(this.value)">
+                        <span class="filter-content">
+                            <span class="filter-text">Show All Gifts</span>
+                            <i class="fa-solid fa-heart icon-heart"></i>
+                        </span>
+                    </label>
+                    <label class="boutique-filter-item">
+                        <input type="radio" name="category-filter-mobile" value="flowers"
+                            onchange="syncAndFilter(this.value)">
+                        <span class="filter-content">
+                            <span class="filter-text">Luxury Florals</span>
+                            <i class="fa-solid fa-heart icon-heart"></i>
+                        </span>
+                    </label>
+                    <label class="boutique-filter-item">
+                        <input type="radio" name="category-filter-mobile" value="jewelry"
+                            onchange="syncAndFilter(this.value)">
+                        <span class="filter-content">
+                            <span class="filter-text">Fine Jewelry</span>
+                            <i class="fa-solid fa-heart icon-heart"></i>
+                        </span>
+                    </label>
+                    <label class="boutique-filter-item">
+                        <input type="radio" name="category-filter-mobile" value="sweets"
+                            onchange="syncAndFilter(this.value)">
+                        <span class="filter-content">
+                            <span class="filter-text">Artisanal Sweets</span>
+                            <i class="fa-solid fa-heart icon-heart"></i>
+                        </span>
+                    </label>
+                    <label class="boutique-filter-item">
+                        <input type="radio" name="category-filter-mobile" value="decor"
+                            onchange="syncAndFilter(this.value)">
+                        <span class="filter-content">
+                            <span class="filter-text">Ambiance & Decor</span>
+                            <i class="fa-solid fa-heart icon-heart"></i>
+                        </span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- 💻 MAIN DESKTOP GRID LAYOUT (Desktop Sidebar + Shared Grid Layout) -->
         <div class="row g-4">
-            <!-- Refined Boutique Sidebar Filters -->
-            <aside class="col-md-4 col-lg-3">
+            <!-- Desktop Sidebar Column (Hidden entirely on mobile viewports) -->
+            <aside class="col-md-4 col-lg-3 d-none d-md-block">
                 <div class="card border-0 bg-white shadow-sm p-4 sticky-md-top"
                     style="top: 110px; border-radius: 12px;">
                     <div class="d-flex align-items-center gap-2 mb-3 pb-2 border-bottom border-light">
@@ -256,60 +312,53 @@
                         <h5 class="font-serif fw-bold text-dark mb-0" style="font-size: 1.1rem;">Filter Collections</h5>
                     </div>
 
-                    <!-- Theme-aligned Custom Filter Pill Group -->
-                    <div class="d-flex flex-column gap-2" role="radiogroup" aria-label="Product Categories">
-
+                    <div class="d-flex flex-column gap-2">
                         <label class="boutique-filter-item">
-                            <input type="radio" name="category-filter" value="all" checked
-                                onchange="filterProducts(this.value)">
+                            <input type="radio" name="category-filter-desktop" value="all" checked
+                                onchange="syncAndFilter(this.value)">
                             <span class="filter-content">
                                 <span class="filter-text">Show All Gifts</span>
                                 <i class="fa-solid fa-heart icon-heart"></i>
                             </span>
                         </label>
-
                         <label class="boutique-filter-item">
-                            <input type="radio" name="category-filter" value="flowers"
-                                onchange="filterProducts(this.value)">
+                            <input type="radio" name="category-filter-desktop" value="flowers"
+                                onchange="syncAndFilter(this.value)">
                             <span class="filter-content">
                                 <span class="filter-text">Luxury Florals</span>
                                 <i class="fa-solid fa-heart icon-heart"></i>
                             </span>
                         </label>
-
                         <label class="boutique-filter-item">
-                            <input type="radio" name="category-filter" value="jewelry"
-                                onchange="filterProducts(this.value)">
+                            <input type="radio" name="category-filter-desktop" value="jewelry"
+                                onchange="syncAndFilter(this.value)">
                             <span class="filter-content">
                                 <span class="filter-text">Fine Jewelry</span>
                                 <i class="fa-solid fa-heart icon-heart"></i>
                             </span>
                         </label>
-
                         <label class="boutique-filter-item">
-                            <input type="radio" name="category-filter" value="sweets"
-                                onchange="filterProducts(this.value)">
+                            <input type="radio" name="category-filter-desktop" value="sweets"
+                                onchange="syncAndFilter(this.value)">
                             <span class="filter-content">
                                 <span class="filter-text">Artisanal Sweets</span>
                                 <i class="fa-solid fa-heart icon-heart"></i>
                             </span>
                         </label>
-
                         <label class="boutique-filter-item">
-                            <input type="radio" name="category-filter" value="decor"
-                                onchange="filterProducts(this.value)">
+                            <input type="radio" name="category-filter-desktop" value="decor"
+                                onchange="syncAndFilter(this.value)">
                             <span class="filter-content">
                                 <span class="filter-text">Ambiance & Decor</span>
                                 <i class="fa-solid fa-heart icon-heart"></i>
                             </span>
                         </label>
-
                     </div>
                 </div>
             </aside>
 
-            <!-- Product Grid Display Column -->
-            <div class="col-md-8 col-lg-9">
+            <!-- Product Catalog Grid (Shared dynamic targeting window) -->
+            <div class="col-12 col-md-8 col-lg-9">
                 <div id="catalog-grid" class="row g-4">
                     <!-- Injected dynamically via script -->
                 </div>

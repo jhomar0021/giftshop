@@ -364,3 +364,26 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+// ─── STATE SYNC FILTER CONTROLLER ───
+function syncAndFilter(selectedValue) {
+  // 1. Sync Desktop Radios
+  const desktopRadios = document.querySelectorAll(
+    'input[name="category-filter-desktop"]',
+  );
+  desktopRadios.forEach((radio) => {
+    radio.checked = radio.value === selectedValue;
+  });
+
+  // 2. Sync Mobile Radios
+  const mobileRadios = document.querySelectorAll(
+    'input[name="category-filter-mobile"]',
+  );
+  mobileRadios.forEach((radio) => {
+    radio.checked = radio.value === selectedValue;
+  });
+
+  // 3. Fire your standard application filter grid logic instantly
+  if (typeof filterProducts === "function") {
+    filterProducts(selectedValue);
+  }
+}
